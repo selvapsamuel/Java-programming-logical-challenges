@@ -11,15 +11,16 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
-public class FactorialRecursiveTest {
+public class FactorialTest {
 
 	private FactorialRecursive factorialRecursive ;
+	private FactorialIterative factorialIterative ;
 	private int n;
 	private int expectedResult;
 	
 	
 	
-	public FactorialRecursiveTest(int n, int expectedResult) {
+	public FactorialTest(int n, int expectedResult) {
 		super();
 		this.n = n;
 		this.expectedResult = expectedResult;
@@ -28,6 +29,7 @@ public class FactorialRecursiveTest {
 	@Before
 	   public void initialize() {
 		factorialRecursive = new FactorialRecursive();
+		factorialIterative = new FactorialIterative();
 	   }
 	
 	  @Parameterized.Parameters
@@ -43,9 +45,15 @@ public class FactorialRecursiveTest {
 	   }
 	  
 	@Test
-	public void calculateFactorial() {
+	public void calculateFactorialRecursive() {
 		
 		assertEquals(expectedResult, 
 				factorialRecursive.findFactorial(n));
+	}
+	@Test
+	public void calculateFactorialIterative() {
+		
+		assertEquals(expectedResult, 
+				factorialIterative.findFactorial(n));
 	}
 }
